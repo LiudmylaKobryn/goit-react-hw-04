@@ -1,18 +1,19 @@
 import { Field, Form, Formik } from "formik";
 
-const SearchBar = () => {
+const SearchBar = ({ setQuery }) => {
   const initialValues = {
     query: "",
   };
   const handleSubmit = (values) => {
     console.log(values);
+    setQuery(values.query);
   };
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form>
           <Field
-            name="guery"
+            name="query"
             placeholder="Search images and photos"
             type="text"
           />

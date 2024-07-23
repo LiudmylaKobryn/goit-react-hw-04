@@ -5,24 +5,33 @@ import ImageGallery from "./ImageGallery/ImageGallery";
 import { fetchImages } from "./services/api";
 
 function App() {
-  const [query, setQuery] = useState([]);
+  const [data, setData] = useState([]);
+  const [query, setQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    if (query.trim() === "") return;
+
     const getData = async () => {
       try {
-        const response = await fetchImages("cat");
-        setQuery(response);
+        setIsLoading(true);
+        const response = await fetchImages(query);
+
+        setData(response);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     };
     getData();
-  }, []);
+  }, [query]);
 
   return (
     <>
-      <SearchBar />
-      <ImageGallery items={query} />
+      <SearchBar setQuery={setQuery} />
+      <ImageGallery items={data} />
+      {isLoading && <h1>Loading data...</h1>}
     </>
   );
 }
