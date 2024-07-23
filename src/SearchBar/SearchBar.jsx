@@ -1,17 +1,24 @@
+import { Field, Form, Formik } from "formik";
+
 const SearchBar = () => {
+  const initialValues = {
+    query: "",
+  };
+  const handleSubmit = (values) => {
+    console.log(values);
+  };
   return (
     <div>
-      <header>
-        <form>
-          <input
-            type="text"
-            autoComplete="off"
-            autoFocus
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        <Form>
+          <Field
+            name="guery"
             placeholder="Search images and photos"
+            type="text"
           />
           <button type="submit">Search</button>
-        </form>
-      </header>
+        </Form>
+      </Formik>
     </div>
   );
 };

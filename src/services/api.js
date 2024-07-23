@@ -10,5 +10,5 @@ export const fetchImages = async (query, perPage = 5) => {
       Authorization: "Client-ID _RVMbxFxle_btNsnmTnVfxCjqoCqelfbyHk3DugkKBM",
     },
   });
-  return response.data;
+  return response.data.results;
 };

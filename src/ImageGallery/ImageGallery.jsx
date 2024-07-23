@@ -1,4 +1,5 @@
 const ImageGallery = ({ items }) => {
+  console.log(items);
   return (
     <div>
       <ul>
