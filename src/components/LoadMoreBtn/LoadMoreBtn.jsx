@@ -1,7 +1,8 @@
+import s from "./LoadMoreBtn.module.css";
 const LoadMoreBtn = ({ onClick }) => {
   return (
-    <div>
-      <button type="button" onClick={onClick}>
+    <div className={s.LoadMoreWrapper}>
+      <button type="button" className={s.LoadMoreBtn} onClick={onClick}>
         Load more
       </button>
     </div>
