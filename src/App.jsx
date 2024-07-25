@@ -11,7 +11,7 @@ function App() {
   const [query, setQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     if (query.trim() === "") return;
@@ -22,7 +22,7 @@ function App() {
         setIsLoading(true);
         const response = await fetchImages(query, page);
 
-        setData(response);
+        setData((prev) => [...prev, ...response]);
       } catch (error) {
         setIsError(true);
       } finally {
