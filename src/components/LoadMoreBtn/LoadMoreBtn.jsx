@@ -1,7 +1,7 @@
-const LoadMoreBtn = ({ setPage, page }) => {
+const LoadMoreBtn = ({ onClick }) => {
   return (
     <div>
-      <button type="button" onClick={() => setPage((prev) => prev + 1)}>
+      <button type="button" onClick={onClick}>
         Load more
       </button>
     </div>

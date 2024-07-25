@@ -32,13 +32,16 @@ function App() {
     getData();
   }, [query, page]);
 
+  const handleLoadMore = () => {
+    setPage((prev) => prev + 1);
+  };
   return (
     <>
       <SearchBar setQuery={setQuery} />
       <ImageGallery items={data} />
       {isLoading && <Loader />}
       {isError && <h2>Something went wrong! Try again...</h2>}
-      <LoadMoreBtn setPage={setPage} page={page} />
+      <LoadMoreBtn onClick={handleLoadMore} />
     </>
   );
 }
